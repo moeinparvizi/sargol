@@ -1,0 +1,185 @@
+{% extends 'baseNoHeader.html' %}
+{% load static %}
+{% block main %}
+  <!--uniq-card-->
+      <section class="row container-fluid animateMdown1-5s justify-content-center">
+
+        <!--<div class="gallery col-xl-4 col-lg-9 col-md-12 col-sm-12 col-12">
+          <div class="images-gallery">
+            <img src="{{product.thumbnail.url}}" alt="ماسک" id="asli-gallery" class="main-image-gallery">
+          </div>
+          <div class="images-choice-gallery">
+            <ul>
+              <li id="img-1" style="opacity:1;"><img class="image-gallery" onclick="image1()" src="{{product.thumbnail.url}}" alt="ماسک"></li>
+              <li id="img-2"><img class="image-gallery" onclick="image2()"  src="{{product.thumbnail2.url}}"  alt="ماسک"></li>
+              <li id="img-3"><img class="image-gallery" onclick="image3()" src="{{product.thumbnail3.url}}" alt="ماسک"></li>
+              <li id="img-4"><img class="image-gallery" onclick="image4()" src="{{product.thumbnail4.url}}"  alt="ماسک"></li>
+            </ul>
+          </div>
+        </div>-->
+
+        <!--<div id="how" class="carousel py-5 slide float-left col-xl-3 col-lg-9 col-md-12 col-sm-12 col-12" data-ride="carousel">
+          <ul class="carousel-indicators">
+            <li data-target="#how" data-slide-to="0" class="active"></li>
+            <li data-target="#how" data-slide-to="1"></li>
+            <li data-target="#how" data-slide-to="2"></li>
+          </ul>
+          <div class="carousel-inner zoom" style="transition: transform .2s;">
+            <div class="carousel-item active">
+              <img src="{{ product.thumbnail.url }}" data-zoom-image="{{ product.thumbnail.url }}" id="zoom">
+              <div class="carousel-caption">
+                <h3>Los Angeles</h3>
+                <p>xdfhdsh</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="{{product.thumbnail.url}}"" alt="Chicago" width="1100" height="500">
+              <div class="carousel-caption">
+                <h3>Chicago</h3>
+                <p>Thank you, Chicago!</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="{{product.thumbnail.url}}"" alt="New York" width="1100" height="500">
+              <div class="carousel-caption">
+                <h3>New York</h3>
+                <p>We love the Big Apple!</p>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#how" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#how" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+
+        <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 py-5">
+          <div class="description-gallery">
+            <p class="description-main-p">
+            {{product.title}}
+            </p>
+            <hr class="description-main-hr">
+            <p class="description-more">
+              {{product.description}}
+            </p>
+          </div>
+        </div>-->
+        <div class="wrapper-main">
+          <div id="content-wrapper" style="padding-top: 12px;">
+
+
+            <div class="column">
+              <img id=featured src="{{ product.thumbnail.url }}">
+
+              <div id="slide-wrapper" >
+                <div id="slider">
+                  {% for img in images %}
+                    {% if product.id == img.productt_id %}
+                      <img class="thumbnail" src="{{ img.img.url }}">
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <h1>{{product.title}}</h1>
+              <hr style="color:#8b2c8b;">
+              <h3>{{product.prise}}</h3>
+
+              <p>{{product.description}}</p>
+              <input value="09194772447" id="targetcopy" onclick="copyTarget()" class="btn btnPurple animateMdown05s"readonly>
+<!--
+              <input value=1 type="number">
+              <a class="btn btnPurple animateMdown05s" href="#">خرید</a>-->
+            </div>
+
+          </div>
+        </div>
+
+        <script type="text/javascript">
+          let thumbnails = document.getElementsByClassName('thumbnail')
+
+          let activeImages = document.getElementsByClassName('active')
+
+          for (var i=0; i < thumbnails.length; i++){
+
+            thumbnails[i].addEventListener('mouseover', function(){
+              console.log(activeImages)
+
+              if (activeImages.length > 0){
+                activeImages[0].classList.remove('active')
+              }
+
+
+              this.classList.add('active')
+              document.getElementById('featured').src = this.src
+            })
+          }
+
+
+          let buttonRight = document.getElementById('slideRight');
+          let buttonLeft = document.getElementById('slideLeft');
+
+          buttonLeft.addEventListener('click', function(){
+            document.getElementById('slider').scrollLeft -= 180
+          })
+
+          buttonRight.addEventListener('click', function(){
+            document.getElementById('slider').scrollLeft += 180
+          })
+
+
+          document.getElementById("copyButton").addEventListener("click", function() {
+    copyToClipboard(document.getElementById("copyTarget"));
+});
+//copy
+function copyTarget() {
+
+  var copyText = document.getElementById("targetcopy");
+
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+
+  document.execCommand("copy")
+
+  alert("Copied the text: " + copyText.value);
+
+}
+
+
+        </script>
+
+      </section>
+
+
+
+    <article class="animateMdown2s">
+      <div class="middle-page">
+        <div class="head-page" style="background-color:#74bcff;">
+          <h2 class="text-center py-5" style="margin-top:0;">موارد پیشنهادی</h2>
+          <hr style="line-height:1px;width:100%;background-color:#fff;">
+          <div class="row container-fluid" style="padding-bottom:20px">
+
+            {% for product in products %}
+            <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card">
+                <img src="{{product.thumbnail.url}}" alt="{{product.title}}" class="parcham-img card-img-top">
+                <div class="card-body">
+                  <h5 class="head-card h5-card text-center">{{product.title}}</h5>
+                  <hr class="hr-card">
+                  <a href="{% url 'web:ProductDetail' product.slug %}" class="btn stretched-link etelaate-bishtar">اطلاعات بیشتر</a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+{% endblock %}

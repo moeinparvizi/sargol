@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+  <!--cards-->
+  <section class="page-effect animateMdown1-5s" id="cards">
+    <div class="container-fluid" style="padding:0px;">
+      <div class="md-5">
+
+        <div class="head-page">
+          <h1 class="text-center py-5">محصولات ما</h1>
+          <hr style="line-height:1px;width:100%;background-color:#fff;">
+
+          <div class="row row-cards container-fluid">
+
+            {% for product in products %}
+            <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card">
+                <img src="{{product.thumbnail.url}}" alt="{{product.title}}" class="parcham-img card-img-top">
+                <div class="card-body">
+                  <h5 class="head-card h5-card text-center">{{product.title}}</h5>
+                  <hr class="hr-card">
+                  <a href="{% url 'web:ProductDetail' product.slug %}" class="btn stretched-link etelaate-bishtar">اطلاعات بیشتر</a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <article class="animateMdown1s">
+<!--accordion-->
+    <div class="middle-page">
+      <div class="head-page" style="background-color: #aad576;">
+        <h2 class="text-center py-5">اعلانیه های جدید</h2>
+        <hr style="line-height:1px;width:100%;background-color:#fff;">
+        <div class="row container-fluid">
+
+          <div class="col-lg-6 col-md-12">
+            <div id="accordion">
+
+              {% for article in articles %}
+              <div class="card card-link">
+                <div class="dropdown-accordion card-header" data-toggle="collapse" href="#collapseOne">
+                  {{article.title}}
+                </div>
+                <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                  <div class="card-body text-accordion">
+                    {{article.description}}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </article>
+{% endblock main %}
