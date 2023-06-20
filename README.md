@@ -73,12 +73,12 @@ my friest project for uncle
 
 ### Built With
 
-* [![html][w3schools.com/html]][HTML5]
-* [![css][w3schools.com/css]][CSS3]
+* [![HTML5]][HTML5]
+* [![CSS3]][CSS3]
 * [![javascript]][JavaScript]
-* [![python][python.org]][Python]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![django][django.com]][Django]
+* [![python]][Python]
+* [![Bootstrap]][Bootstrap-url]
+* [![django]][Django]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
