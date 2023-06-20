@@ -22,7 +22,6 @@ moein parvizi
   <h3 align="center">site for my uncle bye name sargol</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
     <br />
     <a href="https://github.com/moeinparvizi/sargol"><strong>Explore the docs »</strong></a>
     <br />
